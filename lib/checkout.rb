@@ -16,4 +16,10 @@ class Checkout
     @items.each { |item| total += item.price }
     total
   end
+
+  def format_prices
+    @formatted_prices = []
+    @items.each { |item| @formatted_prices << "£#{'%.2f' % item.price.to_f}" }
+    @formatted_prices
+  end
 end

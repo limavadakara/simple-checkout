@@ -29,5 +29,11 @@ describe Checkout do
     expect(subject.total_to_pay).to eq 100
   end
 
+  it 'provides all prices correctly formatted as £xx.xx for all scanned items' do
+    2.times do
+      subject.scan(Item.new(10))
+    end
+    expect(subject.format_prices).to eq ["£10.00", "£10.00"]
+  end
 
 end
