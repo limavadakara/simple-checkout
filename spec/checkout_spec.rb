@@ -22,5 +22,12 @@ describe Checkout do
     expect(subject.items).to include(item)
   end
 
+  it 'provides the total to pay for all scanned items' do
+    10.times do
+      subject.scan(Item.new(10))
+    end
+    expect(subject.total_to_pay).to eq 100
+  end
+
 
 end
